@@ -27,7 +27,7 @@
 
 #include "Settings.h"
 
-#define VERSION "3.03"
+#define VERSION "3.04"
 
 #define HOSTNAME "CLOCK-"
 #define CONFIG "/conf.txt"
@@ -103,6 +103,8 @@ static const char CHANGE_FORM1[] PROGMEM = "<form class='w3-container' action='/
                       "<input class='w3-input w3-border w3-margin-bottom' type='text' name='openWeatherMapApiKey' value='%WEATHERKEY%' maxlength='70'>"
                       "<p><label>%CITYNAME1% (<a href='http://openweathermap.org/find' target='_BLANK'><i class='fas fa-search'></i> Search for City ID</a>)</label>"
                       "<input class='w3-input w3-border w3-margin-bottom' type='text' name='city1' value='%CITY1%' onkeypress='return isNumberKey(event)'></p>"
+                      "<input class='w3-input w3-border w3-margin-bottom' type='text' name='lat' value='%LAT%'>"
+                      "<input class='w3-input w3-border w3-margin-bottom' type='text' name='lon' value='%LON%'>"
                       "<p><input name='metric' class='w3-check w3-margin-top' type='checkbox' %CHECKED%> Use Metric (Celsius)</p>"
                       "<p><input name='showdate' class='w3-check w3-margin-top' type='checkbox' %DATE_CHECKED%> Display Date</p>"
                       "<p><input name='showcity' class='w3-check w3-margin-top' type='checkbox' %CITY_CHECKED%> Display City Name</p>"
@@ -561,6 +563,8 @@ void handleLocations() {
   TIMEDBKEY = server.arg("TimeZoneDB");
   APIKEY = server.arg("openWeatherMapApiKey");
   CityIDs[0] = server.arg("city1").toInt();
+  lat = server.arg("lat");
+  lon = server.arg("lon");
   flashOnSeconds = server.hasArg("flashseconds");
   IS_24HOUR = server.hasArg("is24hour");
   IS_PM = server.hasArg("isPM");
@@ -920,7 +924,8 @@ void getWeatherData() //client function to send/receive GET request data.
   matrix.drawPixel(0, 2, HIGH);
   Serial.println("matrix Width:" + matrix.width());
   matrix.write();
-  TimeDB.updateConfig(TIMEDBKEY, weatherClient.getLat(0), weatherClient.getLon(0));
+  //TimeDB.updateConfig(TIMEDBKEY, weatherClient.getLat(0), weatherClient.getLon(0));
+  TimeDB.updateConfig(TIMEDBKEY, lat, lon);
   time_t currentTime = TimeDB.getTime();
   if(currentTime > 5000 || firstEpoch == 0) {
     setTime(currentTime);

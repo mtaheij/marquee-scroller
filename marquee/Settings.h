@@ -60,6 +60,8 @@ String TIMEDBKEY = ""; // Your API Key from https://timezonedb.com/register
 String APIKEY = ""; // Your API Key from http://openweathermap.org/
 // Default City Location (use http://openweathermap.org/find to find city ID)
 int CityIDs[] = { 5304391 }; //Only USE ONE for weather marquee
+String lat = ""; // Lattitude when weather api call fails
+String lon = ""; // Longitude when weather api call fails
 String marqueeMessage = "";
 boolean IS_METRIC = true; // true = Metric and false = Imperial
 boolean IS_24HOUR = true; // 23:00 millitary 24 hour clock
