@@ -782,6 +782,10 @@ void handleConfigure() {
   }
   form.replace("%CITYNAME1%", cityName);
   form.replace("%CITY1%", String(CityIDs[0]));
+
+  form.replace("%LAT%", lat);
+  form.replace("%LON%", lon);
+
   String isDateChecked = "";
   if (SHOW_DATE) {
     isDateChecked = "checked='checked'";
@@ -1313,6 +1317,8 @@ String writeCityIds() {
     f.println("TIMEDBKEY=" + TIMEDBKEY);
     f.println("APIKEY=" + APIKEY);
     f.println("CityID=" + String(CityIDs[0]));
+    f.println("lat=") + lat;
+    f.println("lon=") + lon;
     f.println("marqueeMessage=" + marqueeMessage);
     f.println("newsSource=" + NEWS_SOURCE);
     f.println("timeDisplayTurnsOn=" + timeDisplayTurnsOn);
@@ -1381,6 +1387,16 @@ void readCityIds() {
     if (line.indexOf("CityID=") >= 0) {
       CityIDs[0] = line.substring(line.lastIndexOf("CityID=") + 7).toInt();
       Serial.println("CityID: " + String(CityIDs[0]));
+    }
+    if (line.indexOf("lat=") >= 0) {
+      lat = line.substring(line.lastIndexOf("lat=") + 7);
+      lat.trim();
+      Serial.println("LAT: " + lat);
+    }
+    if (line.indexOf("lon=") >= 0) {
+      lon = line.substring(line.lastIndexOf("lon=") + 7);
+      lon.trim();
+      Serial.println("LON: " + lon);
     }
     if (line.indexOf("newsSource=") >= 0) {
       NEWS_SOURCE = line.substring(line.lastIndexOf("newsSource=") + 11);
