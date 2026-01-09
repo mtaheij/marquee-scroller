@@ -1317,8 +1317,8 @@ String writeCityIds() {
     f.println("TIMEDBKEY=" + TIMEDBKEY);
     f.println("APIKEY=" + APIKEY);
     f.println("CityID=" + String(CityIDs[0]));
-    f.println("lat=") + lat;
-    f.println("lon=") + lon;
+    f.println("lat=" + lat);
+    f.println("lon=" + lon);
     f.println("marqueeMessage=" + marqueeMessage);
     f.println("newsSource=" + NEWS_SOURCE);
     f.println("timeDisplayTurnsOn=" + timeDisplayTurnsOn);
