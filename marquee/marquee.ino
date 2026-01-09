@@ -1391,12 +1391,12 @@ void readCityIds() {
     if (line.indexOf("lat=") >= 0) {
       lat = line.substring(line.lastIndexOf("lat=") + 4);
       lat.trim();
-      Serial.println("LAT: " + lat);
+      Serial.println("lat: " + lat);
     }
     if (line.indexOf("lon=") >= 0) {
       lon = line.substring(line.lastIndexOf("lon=") + 4);
       lon.trim();
-      Serial.println("LON: " + lon);
+      Serial.println("lon: " + lon);
     }
     if (line.indexOf("newsSource=") >= 0) {
       NEWS_SOURCE = line.substring(line.lastIndexOf("newsSource=") + 11);
