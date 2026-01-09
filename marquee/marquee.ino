@@ -1389,12 +1389,12 @@ void readCityIds() {
       Serial.println("CityID: " + String(CityIDs[0]));
     }
     if (line.indexOf("lat=") >= 0) {
-      lat = line.substring(line.lastIndexOf("lat=") + 7);
+      lat = line.substring(line.lastIndexOf("lat=") + 4);
       lat.trim();
       Serial.println("LAT: " + lat);
     }
     if (line.indexOf("lon=") >= 0) {
-      lon = line.substring(line.lastIndexOf("lon=") + 7);
+      lon = line.substring(line.lastIndexOf("lon=") + 4);
       lon.trim();
       Serial.println("LON: " + lon);
     }
