@@ -61,8 +61,8 @@ String APIKEY = ""; // Your API Key from http://openweathermap.org/
 // Default City Location (use http://openweathermap.org/find to find city ID)
 int CityIDs[] = { 5304391 }; //Only USE ONE for weather marquee
 String marqueeMessage = "";
-boolean IS_METRIC = false; // false = Imperial and true = Metric
-boolean IS_24HOUR = false; // 23:00 millitary 24 hour clock
+boolean IS_METRIC = true; // true = Metric and false = Imperial
+boolean IS_24HOUR = true; // 23:00 millitary 24 hour clock
 boolean IS_PM = true; // Show PM indicator on Clock when in AM/PM mode
 const int WEBSERVER_PORT = 80; // The port you can access this device on over HTTP
 const boolean WEBSERVER_ENABLED = true;  // Device will provide a web interface via http://[ip]:[port]/
@@ -119,5 +119,5 @@ String OTA_Password = "";     // Set an OTA password here -- leave blank if you 
 // End Settings
 //******************************
 //blue-grey
-String themeColor = "blue-grey"; // this can be changed later in the web interface.
+String themeColor = "purple"; // this can be changed later in the web interface.
 
